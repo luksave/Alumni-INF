@@ -1,0 +1,67 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.Projeto</groupId>
+	<artifactId>projeto-base</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>Projeto</name>
+	<description>Exemplo de arquivo pom.xml</description>
+	<url>https://github.com/User/Nome-do-projeto</url>
+  
+  	<properties>
+        	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        	<project.mainClass>Main</project.mainClass>
+  	</properties>
+  
+	<build>
+		<plugins>
+			<plugin>
+			<!-- Para compilar o Projeto -->	
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+
+			<plugin>
+			<!-- Para construir um executável JAR -->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>3.1.0</version>
+				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<classpathPrefix>lib/</classpathPrefix>
+							<mainClass>Main</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+
+			<plugin>
+			<!-- Para executar o JAR gerado-->	
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.2.1</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>java</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<mainClass>Main</mainClass>
+				</configuration>
+			</plugin>
+			
+		</plugins>
+	</build>
+
+			
+</project>
