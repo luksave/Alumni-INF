@@ -3,43 +3,62 @@ package br.ufg.inf.alumniinf.negocio.autenticacao;
 
 public class ExternalUser extends User{
 
-	private int numeroCPF;
-	private int numeroCNPJ;
-	private String numeroTelefone;
+	private int CPF;
+	private int CNPJ;
+	private String email;
+	private String tellphone;
 	
-	public ExternalUser(String fullName, int CPF, int CNPJ, String telefone) {
+	public ExternalUser(String fullName, int CPF, int CNPJ, String email, String tellphone) {
 		//10: tamanho da senha
 		super(fullName, 10);
 		
-		this.numeroCNPJ     = CNPJ;
-		this.numeroCPF      = CPF;
-		this.numeroTelefone = telefone;
+		this.CNPJ      = CNPJ;
+		this.CPF       = CPF;
+		this.email 	   = email;
+		this.tellphone = tellphone;
 		
 	}
 	
 	
-	public int getNumeroCPF() {
-		return numeroCPF;
+	public int getCPF() {
+		return CPF;
+		
 	}
 
-	public void setNumeroCPF(int numeroCPF) {
-		this.numeroCPF = numeroCPF;
+	public void setCPF(int CPF) {
+		this.CPF = CPF;
+		
 	}
 
-	public int getNumeroCNPJ() {
-		return numeroCNPJ;
+	public int getCNPJ() {
+		return CNPJ;
+		
 	}
 
-	public void setNumeroCNPJ(int numeroCNPJ) {
-		this.numeroCNPJ = numeroCNPJ;
+	public void setCNPJ(int CNPJ) {
+		this.CNPJ = CNPJ;
+		
 	}
 
-	public String getNumeroTelefone() {
-		return numeroTelefone;
+	public String getEmail() {
+		return email;
+		
 	}
 
-	public void setNumeroTelefone(String numeroTelefone) {
-		this.numeroTelefone = numeroTelefone;
+	public void setEmail(String email) {
+		this.email = email;
+		
+	}
+
+
+	public String getTellphone() {
+		return tellphone;
+		
+	}
+
+	public void setTellphone(String tellphone) {
+		this.tellphone = tellphone;
+		
 	}
 
 	

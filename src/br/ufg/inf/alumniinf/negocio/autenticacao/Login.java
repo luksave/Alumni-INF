@@ -13,36 +13,36 @@ public class Login {
 	static Scanner scanner = new Scanner(System.in);
 	static Console console = System.console();
 	
-	private static File registroCadastro = new File("cadastro/registroCadastros.csv");
+	private static File registerRecord = new File("cadastro/registroCadastros.csv");
 	
-	public static Boolean realizarLogin(){
+	public static Boolean realizeLogin(){
 		
-		ReaderCSV reader = new ReaderCSV(registroCadastro);
+		ReaderCSV reader = new ReaderCSV(registerRecord);
 		//Lendo da linha 1 até a última linha no csv (quantidade de cadastros)
-		List<String[]> listaDadosCadastro = reader.getLinhas().subList(0, Register.quantidadeCadastros);
+		List<String[]> registerDataList = reader.getLines().subList(0, Register.registerQuantity);
 		
 		System.out.print("Usuário: ");
+		//String user = "Lucas FelipL87";
 		String user = scanner.nextLine();
 		
 		System.out.print("Senha: ");
+		//String pass = "WhQjq_p+Nl";
 		String pass = scanner.nextLine();
 
 		scanner.close();
 		
-		int linhaAtual = 0;
+		int currentLine = 0;
 		
-		for (Iterator<String[]> iterator = listaDadosCadastro.iterator(); iterator.hasNext();) {
-			String[] userAtual = reader.getLinhas().get(linhaAtual);
+		for (Iterator<String[]> iterator = registerDataList.iterator(); iterator.hasNext();) {
+			String[] currentUser = reader.getLines().get(currentLine);
 			
-			//System.out.print("Registro atual: " +userAtual[0] + " - " +userAtual[1]);
+			System.out.print("\nRegistro atual: " +currentUser[0] + " - " +currentUser[1]);
 			
-			if(userAtual[0].equals(user) && userAtual[1].equals(pass)) return true;
+			if(currentUser[0].equals(user) && currentUser[1].equals(pass)) return true;
 		
-			linhaAtual++;
+			currentLine++;
 			
 		}
-		
-		
 		
 		return false;
 		

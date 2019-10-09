@@ -11,17 +11,17 @@ import com.opencsv.CSVReader; //Usar como exemplo de dependência no Maven!
 public class ReaderCSV {
 
 	private CSVReader reader = null;
-	private List<String[]> linhas = null;
+	private List<String[]> lines = null;
 
-	public ReaderCSV(File registroSenhas) {
+	public ReaderCSV(File passwordRecord) {
 
 		// Objeto para leitura de um arquivo CSV
 		try {
-			reader = new CSVReader(new FileReader(registroSenhas));
+			reader = new CSVReader(new FileReader(passwordRecord));
 		
 			// Armazena cada linha do arquivo CSV em uma posição de uma lista de vetores de strings
 			// Cada posição é um vetor de strings, com uma posição para cada informação da linha
-			linhas = reader.readAll();
+			lines = reader.readAll();
 			reader.close();
 			
 		} catch (FileNotFoundException e) {
@@ -44,13 +44,13 @@ public class ReaderCSV {
 		
 	}
 
-	public List<String[]> getLinhas() {
-		return linhas;
+	public List<String[]> getLines() {
+		return lines;
 		
 	}
 
-	public void setLinhas(List<String[]> linhas) {
-		this.linhas = linhas;
+	public void setLines(List<String[]> lines) {
+		this.lines = lines;
 		
 	}
 }

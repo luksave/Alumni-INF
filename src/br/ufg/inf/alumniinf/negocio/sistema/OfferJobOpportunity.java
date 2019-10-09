@@ -11,42 +11,42 @@ public class OfferJobOpportunity {
 		//scanner = new Scanner(System.in);
 		
 		//System.out.print("Titulo Descritivo: ");
-		String titulo = "Desenvolvedor Java";//scanner.nextLine();
+		String title = "Desenvolvedor Java";//scanner.nextLine();
 
 		//System.out.print("Cidade de Atuação: ");
-		String cidade = "Goiânia"; //scanner.nextLine();
+		String city = "Goiânia"; //scanner.nextLine();
 
 		//System.out.print("Formação necessária (Opicional - Enter): ");
-		String formacao = "Graduação em Engenharia de Software, Ciência da Computação, ou Sistemas de Informação";//scanner.nextLine();
-		if(formacao == "\n") formacao = null;
+		String formation = "Graduação em Engenharia de Software, Ciência da Computação, ou Sistemas de Informação";//scanner.nextLine();
+		if(formation == "\n") formation = null;
 			
 		//System.out.print("Habilidades desejáveis: ");
-		String habilidades = "Java e Pacote office";//scanner.nextLine();
+		String skils = "Java e Pacote office";//scanner.nextLine();
 		
 		
 		//System.out.print("Salario Mínimo (Opicional - Enter): ");
-		String valMin = "1000.0"; //scanner.nextLine();
-		double salMin;
+		String minVal = "1000.0"; //scanner.nextLine();
+		double minSal;
 		
-		if(valMin == "\n") salMin = 0;
-		else			   salMin = Double.valueOf(valMin);
+		if(minVal == "\n") minSal = 0;
+		else			   minSal = Double.valueOf(minVal);
 		
 		
 		//System.out.print("Salario Máximo (Opicional - Enter): ");
-		String valMax = "2000.0"; //scanner.nextLine();
-		double salMax;
+		String maxVal = "2000.0"; //scanner.nextLine();
+		double maxSal;
 		
-		if(valMax == "\n") salMax = 0;
-		else			   salMax = Double.valueOf(valMax);
+		if(maxVal == "\n") maxSal = 0;
+		else			   maxSal = Double.valueOf(maxVal);
 		
 		
-		JobOpportunity oportunidade = new JobOpportunity(titulo, cidade, formacao, habilidades, salMin, salMax);
+		JobOpportunity oportunidade = new JobOpportunity(title, city, formation, skils, minSal, maxSal);
 		
-		System.out.println("Oportunidade de emprego cadastrada: "   +oportunidade.getTituloDescritivo() + "\n"
-																	+oportunidade.getCidadeAtuacao() + "\n"
-																	+oportunidade.getFormacaoAcademica()+ "\n"
-																	+oportunidade.getHabilidades() + "\n"
-																	+oportunidade.getFaixaSalarial());
+		System.out.println("Oportunidade de emprego cadastrada: \n" +oportunidade.getDescriptiveTitle() + " - "
+																	+oportunidade.getActingCity()       + "\nFormação exigida: "
+																	+oportunidade.getAcademicFormation()+ "\nHabilidades necessárias: "
+																	+oportunidade.getSkils()            + "\nFaixa salarial: "
+																	+oportunidade.getSalaryRange());
 		
 	}
 	

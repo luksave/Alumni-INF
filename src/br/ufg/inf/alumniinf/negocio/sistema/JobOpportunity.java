@@ -3,90 +3,67 @@ package br.ufg.inf.alumniinf.negocio.sistema;
 
 public class JobOpportunity {
 
-	private String tituloDescritivo;
-	private String cidadeAtuacao;
-	private String formacaoAcademica;
-	private String habilidades;
-	
-	private double salarioMin;
-	private double salarioMax;
-	private String faixaSalarial = String.valueOf(salarioMin) + String.valueOf(salarioMax);
+	private String descriptiveTitle;
+	private String actingCity;
+	private String academicFormation;
+	private String skils;
+	private String salaryRange;
 	
 	
-	public JobOpportunity(String tituloDescritivo,  String cidadeAtuacao,
-			              String formacaoAcademica, String habilidades, 
-			              double salarioMin,        double salarioMax) {
+	public JobOpportunity(String title,  String city,     String formation, 
+						  String skils,  double minSalary,  double maxSalary) {
 		
-		this.tituloDescritivo = tituloDescritivo;
-		this.cidadeAtuacao = cidadeAtuacao;
-		this.formacaoAcademica = formacaoAcademica;
-		this.habilidades = habilidades;
-		this.salarioMin = salarioMin;
-		this.salarioMax = salarioMax;
+		this.descriptiveTitle = title;
+		this.actingCity = city;
+		this.academicFormation = formation;
+		this.skils = skils;
+		this.salaryRange = "R$" +String.valueOf(minSalary) + " ~ R$" + String.valueOf(maxSalary);
 		
 	}
 
 	
-	public String getTituloDescritivo() {
-		return tituloDescritivo;
+	public String getDescriptiveTitle() {
+		return descriptiveTitle;
 		
 	}
 	
-	public void setTituloDescritivo(String tituloDescritivo) {
-		this.tituloDescritivo = tituloDescritivo;
+	public void setDescriptiveTitle(String title) {
+		this.descriptiveTitle = title;
 		
 	}
 	
-	public String getCidadeAtuacao() {
-		return cidadeAtuacao;
+	public String getActingCity() {
+		return actingCity;
 		
 	}
 	
-	public void setCidadeAtuacao(String cidadeAtuacao) {
-		this.cidadeAtuacao = cidadeAtuacao;
+	public void setActingCity(String city) {
+		this.actingCity = city;
 		
 	}
 	
-	public String getFormacaoAcademica() {
-		return formacaoAcademica;
+	public String getAcademicFormation() {
+		return academicFormation;
 		
 	}
 	
-	public void setFormacaoAcademica(String formacaoAcademica) {
-		this.formacaoAcademica = formacaoAcademica;
+	public void setAcademicFormation(String formation) {
+		this.academicFormation = formation;
 		
 	}
 	
-	public String getHabilidades() {
-		return habilidades;
+	public String getSkils() {
+		return skils;
 		
 	}
 	
-	public void setHabilidades(String habilidades) {
-		this.habilidades = habilidades;
-		
-	}
-	
-	public double getSalarioMin() {
-		return salarioMin;
-		
-	}
-	
-	public void setSalarioMin(double salarioMin) {
-		this.salarioMin = salarioMin;
-		
-	}
-	public double getSalarioMax() {
-		return salarioMax;
-		
-	}
-	public void setSalarioMax(double salarioMax) {
-		this.salarioMax = salarioMax;
+	public void setSkils(String skils) {
+		this.skils = skils;
 		
 	}
 
-	public String getFaixaSalarial() {
-		return faixaSalarial;
+	public String getSalaryRange() {
+		return salaryRange;
 		
 	}
 }

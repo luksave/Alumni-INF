@@ -4,21 +4,20 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.List;
 
 import com.opencsv.CSVWriter;; //Usar como exemplo de dependência no Maven!
 
 public class WriterCSV {
 	private static CSVWriter writer = null;
 
-	public static void Writer(File registroSenhas, List<String[]> registro) {
+	public static void Writer(File passwordRecord, String[] record) {
 
 		// Objeto para leitura de um arquivo CSV
 		try {
-			writer = new CSVWriter(new FileWriter(registroSenhas));
+			writer = new CSVWriter(new FileWriter(passwordRecord, true));
 		
 			// Armazena em uma linha do arquivo CSV o registro de usuário e senha
-			writer.writeAll(registro);
+			writer.writeNext(record);
 			writer.close();
 			
 		} catch (FileNotFoundException e) {

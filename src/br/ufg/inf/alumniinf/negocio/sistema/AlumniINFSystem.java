@@ -19,41 +19,44 @@ public class AlumniINFSystem {
 	
     private static SecureRandom random = new SecureRandom();
     
-	public static String generateUsername(String nome){
+	public static String generateUsername(String name){
 
 		Random rand = new Random();
 		int    num  = rand.nextInt(100);
 
-		String usuario = nome.substring(0,(nome.length()-1)) + nome.charAt(0) + num;
+		String user = name.substring(0,(name.length()-1)) + name.charAt(0) + num;
 		
-		System.out.println("Nome de usuário gerado: " +usuario);
-		return usuario;
+		System.out.println("Nome de usuário gerado: " +user);
+		return user;
 		
 	}
 	
 	
-	public static String generatePassword(int tamanho){
-		if (tamanho < 1) throw new IllegalArgumentException();
+	public static String generatePassword(int size){
+		if (size < 1) throw new IllegalArgumentException();
 
-        StringBuilder sb = new StringBuilder(tamanho);
-        for (int i = 0; i < tamanho; i++) {
+        StringBuilder sb = new StringBuilder(size);
+        
+        for (int i = 0; i < size; i++) {
             int  rndCharAt = random.nextInt(PASSWORD_ALLOW.length());
             char rndChar   = PASSWORD_ALLOW.charAt(rndCharAt);
+        
             sb.append(rndChar);
 
         }
 
         System.out.println("Senha gerada: " +sb.toString());
+        
 		return sb.toString();	    
         
 	}
 	
 	
 	public static String shuffleString(String string) {
-        List<String> letras = Arrays.asList(string.split(""));
-        Collections.shuffle(letras);
+        List<String> letters = Arrays.asList(string.split(""));
+        Collections.shuffle(letters);
         
-        return letras.stream().collect(Collectors.joining());
+        return letters.stream().collect(Collectors.joining());
         
     }
 	

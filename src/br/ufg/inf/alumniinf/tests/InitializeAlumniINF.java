@@ -1,4 +1,4 @@
-package br.ufg.inf.alumniinf.testes;
+package br.ufg.inf.alumniinf.tests;
 
 import br.ufg.inf.alumniinf.negocio.autenticacao.Login;
 import br.ufg.inf.alumniinf.negocio.autenticacao.Register;
@@ -6,7 +6,7 @@ import br.ufg.inf.alumniinf.negocio.sistema.OfferJobOpportunity;
 
 
 
-public class InicializarAlumniINF {
+public class InitializeAlumniINF {
 
 	// Teste: Realizar o cadastro de um usuário, logar o usuário e 
 	// realizar o cadastro de uma oportunidade de emprego
@@ -14,9 +14,10 @@ public class InicializarAlumniINF {
 		
 		Register.main();
 		
-		if(Login.realizarLogin()){
+		if(Login.realizeLogin()){
 			System.out.println("\n----------- LOGADO -----------");
 			OfferJobOpportunity.main();
+			
 
 		}else{
 			System.out.println("\n------- Falha no Login -------");
