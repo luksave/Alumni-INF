@@ -28,6 +28,25 @@
 			</plugin>
 
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>3.1.1</version>
+				<executions>
+					<execution>
+						<id>copy-dependencies</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<includeScope>runtime</includeScope>
+							<outputDirectory>${project.build.directory}/jars/</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			
+			<plugin>
 			<!-- Para construir um executável JAR -->
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
@@ -36,8 +55,8 @@
 					<archive>
 						<manifest>
 							<addClasspath>true</addClasspath>
-							<classpathPrefix>src/</classpathPrefix>
-							<mainClass>br.ufg.inf.alumniinf.tests.InitializeAlumniINF</mainClass>
+							<classpathPrefix>jars/</classpathPrefix>
+							<mainClass>${project.mainClass}</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
@@ -56,7 +75,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<mainClass>br.ufg.inf.alumniinf.tests.InitializeAlumniINF</mainClass>
+					<mainClass>${project.mainClass}</mainClass>
 				</configuration>
 			</plugin>
 		</plugins>
