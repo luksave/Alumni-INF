@@ -3,10 +3,12 @@
 	 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.Projeto</groupId>
-	<artifactId>projeto-Alumni-INF</artifactId>
+	<groupId>br.ufg.inf.alumniinf</groupId>
+	<artifactId>Alumni-INF</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Projeto Alumni-INF</name>
+	<packaging>jar</packaging>
+	<name>${project.groupId}:${project.artifactId}</name>
+	
 	<description>Exemplo de projeto Java com integração contínua</description>
 	<url>https://github.com/luksave/Alumni-INF</url>
   
