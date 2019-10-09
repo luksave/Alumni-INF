@@ -36,7 +36,6 @@
 					<archive>
 						<manifest>
 							<addClasspath>true</addClasspath>
-							<classpathPrefix>lib/</classpathPrefix>
 							<mainClass>br.ufg.inf.alumniinf.tests.InitializeAlumniINF</mainClass>
 						</manifest>
 					</archive>
@@ -59,7 +58,6 @@
 					<mainClass>br.ufg.inf.alumniinf.tests.InitializeAlumniINF</mainClass>
 				</configuration>
 			</plugin>
-			
 		</plugins>
 	</build>
 
