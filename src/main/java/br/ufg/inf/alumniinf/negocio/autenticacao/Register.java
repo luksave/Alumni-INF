@@ -1,40 +1,35 @@
 package br.ufg.inf.alumniinf.negocio.autenticacao;
 
-//import java.util.Scanner;
+import br.ufg.inf.alumniinf.utils.model.bean.ExternalUser;
+import br.ufg.inf.alumniinf.utils.model.dao.UserDAO;
 
 public class Register {
 
-	//private static Scanner scanner;
 	public  static int registerQuantity = 0;
 	
 	public static void main() {
 		
-		//scanner = new Scanner(System.in);
+		System.out.println("Registro de usuário externo");
 		
-		//System.out.print("Nome Completo: ");
-		String fullName = "Lucas Felipe"; //scanner.nextLine();
+		String fullName  = "Lucas Felipe"; 
+		String razaoSoc  = "Luksave C.O";
+		int    CPF       =  219389384;
+		int    CNPJ      =  910291142;
+		String email     = "lucasfelipems@gmail.com";
+		String tellphone = "01290494029";
 		
-		//System.out.print("CPF: ");
-		int CPF = 219389384; //scanner.nextInt();
+		ExternalUser extUser = new ExternalUser(fullName, razaoSoc, CPF, CNPJ, email, tellphone);
+		UserDAO      daoUser = new UserDAO();
 		
-		//System.out.print("CNPJ: ");
-		int CNPJ = 910291142; //scanner.nextInt();
+		daoUser.create(extUser);
 		
-		//System.out.print("E-mail: ");
-		String email = "lucasfelipems@gmail.com"; //scanner.nextLine();
-				
-		//System.out.print("Telefone: ");
-		String tellphone = "01290494029"; //scanner.nextLine();
-		
-		//scanner.close();
-		
-		ExternalUser user = new ExternalUser(fullName, CPF, CNPJ, email, tellphone);
-		
-		System.out.println("Usuário cadastrado: " +user.getFullName() +  " - " 
-											      +user.getCPF() +     " - "
-											      +user.getCNPJ() +    " - "
-											      +user.getEmail() +         " - "
-											      +user.getTellphone() + ".");
+		// TODO - Trocar por métodos de acesso a BD.
+		System.out.println("Usuário cadastrado: " +extUser.getFullName()    + " - "
+												  +extUser.getRazaoSocial() + " - "
+											      +extUser.getCPF()         + " - "
+											      +extUser.getCNPJ()        + " - "
+											      +extUser.getEmail()       + " - "
+											      +extUser.getTellphone()   + ".  ");
 		
 		registerQuantity++;
 		

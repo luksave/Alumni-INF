@@ -3,6 +3,7 @@ package br.ufg.inf.alumniinf.tests;
 import br.ufg.inf.alumniinf.negocio.autenticacao.Login;
 import br.ufg.inf.alumniinf.negocio.autenticacao.Register;
 import br.ufg.inf.alumniinf.negocio.sistema.OfferJobOpportunity;
+import br.ufg.inf.alumniinf.utils.model.bean.ExternalUser;
 
 
 
@@ -12,18 +13,17 @@ public class InitializeAlumniINF {
 	// realizar o cadastro de uma oportunidade de emprego
 	public static void main(String[] args) {
 		
+		//Tentativa de Cadastro de usuário
 		Register.main();
 		
-		if(Login.realizeLogin()){
-			System.out.println("\n----------- LOGADO -----------");
-			OfferJobOpportunity.main();
-			
+		//Tentativa de Login
+		//	Sucesso: Retorna usuário
+		ExternalUser user = Login.realizeLogin();
 
-		}else{
-			System.out.println("\n------- Falha no Login -------");
-			
-		}		
-	
+		//Tentativa de Cadastro de oportunidade
+		//	Passa como argumento um usuário externo
+		OfferJobOpportunity.main(user);
+		
 	}
 
 }

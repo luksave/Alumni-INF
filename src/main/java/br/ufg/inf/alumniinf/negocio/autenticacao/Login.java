@@ -1,50 +1,31 @@
 package br.ufg.inf.alumniinf.negocio.autenticacao;
 
-import java.util.Iterator;
-import java.util.List;
 import java.util.Scanner;
-import java.io.Console;
-import java.io.File;
 
-import br.ufg.inf.alumniinf.utils.ReaderCSV;
+import br.ufg.inf.alumniinf.utils.model.bean.ExternalUser;
+import br.ufg.inf.alumniinf.utils.model.dao.UserDAO;
 
 public class Login {
 
 	static Scanner scanner = new Scanner(System.in);
-	static Console console = System.console();
 	
-	private static File registerRecord = new File("cadastro/registroCadastros.csv");
-	
-	public static Boolean realizeLogin(){
+	public static ExternalUser realizeLogin(){
 		
-		ReaderCSV reader = new ReaderCSV(registerRecord);
-		//Lendo da linha 1 até a última linha no csv (quantidade de cadastros)
-		List<String[]> registerDataList = reader.getLines().subList(0, Register.registerQuantity);
+		UserDAO daoUser = new UserDAO();
 		
 		System.out.print("Usuário: ");
-		String user = "Lucas FelipL87";
-		//String user = scanner.nextLine();
+		//String user = "Lucas FelipL87";
+		String userName = scanner.nextLine();
 		
 		System.out.print("Senha: ");
-		String pass = "WhQjq_p+Nl";
-		//String pass = scanner.nextLine();
+		//String pass = "WhQjq_p+Nl";
+		String userPass = scanner.nextLine();
 
 		scanner.close();
 		
-		int currentLine = 0;
+		ExternalUser user = daoUser.loginExternalUser(userName, userPass);
 		
-		for (Iterator<String[]> iterator = registerDataList.iterator(); iterator.hasNext();) {
-			String[] currentUser = reader.getLines().get(currentLine);
-			
-			System.out.print("\nRegistro atual: " +currentUser[0] + " - " +currentUser[1]);
-			
-			if(currentUser[0].equals(user) && currentUser[1].equals(pass)) return true;
-		
-			currentLine++;
-			
-		}
-		
-		return false;
+		return user;
 		
 	}
 	
