@@ -22,12 +22,12 @@ public class Login {
 		List<String[]> registerDataList = reader.getLines().subList(0, Register.registerQuantity);
 		
 		System.out.print("Usuário: ");
-		//String user = "Lucas FelipL87";
-		String user = scanner.nextLine();
+		String user = "Lucas FelipL87";
+		//String user = scanner.nextLine();
 		
 		System.out.print("Senha: ");
-		//String pass = "WhQjq_p+Nl";
-		String pass = scanner.nextLine();
+		String pass = "WhQjq_p+Nl";
+		//String pass = scanner.nextLine();
 
 		scanner.close();
 		
