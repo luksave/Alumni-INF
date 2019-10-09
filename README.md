@@ -1,5 +1,7 @@
 # Projeto Alumni INF
 
+[![Build Status](https://travis-ci.com/luksave/Alumni-INF.svg?branch=master)](https://travis-ci.com/luksave/Alumni-INF)
+
 ## Descrição
 Nos últimos anos, o Instituto de Informática da Universidade Federal de Goiás (INF-UFG) tem
 identificado uma necessidade crescente de obter informações sobre os ex-alunos (do latim alumni)
