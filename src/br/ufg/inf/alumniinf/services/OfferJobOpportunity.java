@@ -1,8 +1,8 @@
-package br.ufg.inf.alumniinf.negocio.sistema;
+package br.ufg.inf.alumniinf.services;
 
-import br.ufg.inf.alumniinf.utils.model.bean.ExternalUser;
-import br.ufg.inf.alumniinf.utils.model.bean.JobOpportunity;
-import br.ufg.inf.alumniinf.utils.model.dao.JobOpportunityDAO;
+import br.ufg.inf.alumniinf.dao.model.JobOpportunityDAO;
+import br.ufg.inf.alumniinf.persistence.model.bean.ExternalUser;
+import br.ufg.inf.alumniinf.persistence.model.bean.JobOpportunity;
 
 public class OfferJobOpportunity {
 

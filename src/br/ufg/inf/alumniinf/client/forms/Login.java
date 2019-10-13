@@ -1,9 +1,9 @@
-package br.ufg.inf.alumniinf.negocio.autenticacao;
+package br.ufg.inf.alumniinf.client.forms;
 
 import java.util.Scanner;
 
-import br.ufg.inf.alumniinf.utils.model.bean.ExternalUser;
-import br.ufg.inf.alumniinf.utils.model.dao.UserDAO;
+import br.ufg.inf.alumniinf.dao.model.UserDAO;
+import br.ufg.inf.alumniinf.persistence.model.bean.ExternalUser;
 
 public class Login {
 

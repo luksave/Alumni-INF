@@ -1,4 +1,4 @@
-package br.ufg.inf.alumniinf.utils.connection;
+package br.ufg.inf.alumniinf.dao.connection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

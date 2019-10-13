@@ -1,4 +1,4 @@
-package br.ufg.inf.alumniinf.utils.model.bean;
+package br.ufg.inf.alumniinf.persistence.model.bean;
 
 
 public class ExternalUser extends User{
@@ -9,7 +9,7 @@ public class ExternalUser extends User{
 	
 	/*------------------------------------------------CONSTRUTOR-----------------------------------------------*/
 	public ExternalUser(String fullName, String razao, int numCPF, int numCNPJ, String email, String tellphone) {
-		super(fullName, numCPF, email, tellphone, 10); //10: tamanho da senha
+		super(fullName, numCPF, email, tellphone, true); //10: tamanho da senha
 		
 		this.razaoSocial = razao;
 		this.CNPJ      	 = numCNPJ;

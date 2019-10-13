@@ -1,11 +1,11 @@
-package br.ufg.inf.alumniinf.utils.model.dao;
+package br.ufg.inf.alumniinf.dao.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import br.ufg.inf.alumniinf.utils.connection.ConnectionFactory;
-import br.ufg.inf.alumniinf.utils.model.bean.JobOpportunity;;
+import br.ufg.inf.alumniinf.dao.connection.ConnectionFactory;
+import br.ufg.inf.alumniinf.persistence.model.bean.JobOpportunity;
 
 public class JobOpportunityDAO {
 	// Cria um usuário no BD.

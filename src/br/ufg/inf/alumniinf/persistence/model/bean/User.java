@@ -1,24 +1,26 @@
-package br.ufg.inf.alumniinf.utils.model.bean;
+package br.ufg.inf.alumniinf.persistence.model.bean;
 
-import br.ufg.inf.alumniinf.negocio.sistema.AlumniINFSystem;
+import br.ufg.inf.alumniinf.services.AlumniINFSystem;
 
 public class User {
-	private String fullName;
-	private String userName;
-	private String password;
-	private int    numCPF;
-	private String email;
-	private String tellphone;
+	private String  fullName;
+	private String  userName;
+	private String  password;
+	private int     numCPF;
+	private String  email;
+	private String  tellphone;
+	private boolean external;
 	
 	
 	/*------------------------------------CONSTRUTOR-----------------------------------*/
-	public User(String fullName, int CPF, String email, String tellphone, int passwordSize) {
+	public User(String fullName, int CPF, String email, String tellphone, boolean type) {
 		this.fullName  = fullName;
 		this.numCPF	   = CPF;
 		this.email     = email;
 		this.tellphone = tellphone;
+		this.external  = type;
 		this.userName  = AlumniINFSystem.generateUsername(fullName);
-		this.password  = AlumniINFSystem.generatePassword(passwordSize);
+		this.password  = AlumniINFSystem.generatePassword(10); //10: tamanho da senha
 		
 	}
 	/*------------------------------------CONSTRUTOR-----------------------------------*/
@@ -58,6 +60,14 @@ public class User {
 		numCPF = cPF;
 	}
 	
+	/*----------------------------------TIPO-de-USER------------------------------------*/
+	public boolean isExternal() {
+		return external;
+	}
+	public void setExternal(boolean external) {
+		this.external = external;
+	}
+
 	/*--------------------------------------E-mail-------------------------------------*/
 	public String getEmail() {
 		return email;

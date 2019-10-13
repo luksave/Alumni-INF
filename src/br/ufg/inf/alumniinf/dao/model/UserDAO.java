@@ -1,13 +1,13 @@
-package br.ufg.inf.alumniinf.utils.model.dao;
+package br.ufg.inf.alumniinf.dao.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import br.ufg.inf.alumniinf.utils.connection.ConnectionFactory;
-import br.ufg.inf.alumniinf.utils.model.bean.ExternalUser;
-import br.ufg.inf.alumniinf.utils.model.bean.User;
+import br.ufg.inf.alumniinf.dao.connection.ConnectionFactory;
+import br.ufg.inf.alumniinf.persistence.model.bean.ExternalUser;
+import br.ufg.inf.alumniinf.persistence.model.bean.User;
 
 public class UserDAO {
 

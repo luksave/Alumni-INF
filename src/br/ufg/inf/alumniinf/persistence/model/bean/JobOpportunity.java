@@ -1,4 +1,4 @@
-package br.ufg.inf.alumniinf.utils.model.bean;
+package br.ufg.inf.alumniinf.persistence.model.bean;
 
 public class JobOpportunity {
 	private String descriptiveTitle;

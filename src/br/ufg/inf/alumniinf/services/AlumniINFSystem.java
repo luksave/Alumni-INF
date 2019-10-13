@@ -1,4 +1,4 @@
-package br.ufg.inf.alumniinf.negocio.sistema;
+package br.ufg.inf.alumniinf.services;
 
 import java.security.SecureRandom;
 import java.util.Arrays;
