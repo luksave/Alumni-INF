@@ -1,37 +1,43 @@
 package br.ufg.inf.alumniinf.client.forms;
 
-import br.ufg.inf.alumniinf.dao.model.UserDAO;
-import br.ufg.inf.alumniinf.persistence.model.bean.ExternalUser;
-import br.ufg.inf.alumniinf.persistence.model.bean.User;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+
+import br.ufg.inf.alumniinf.services.RegisterAlumnusUser;
+import br.ufg.inf.alumniinf.services.RegisterExternalUser;
+
 
 public class Register {
 
-	public  static int registerQuantity = 0;
+	public static int registerQuantity = 0;
 	
 	public static void main(int type) {
 		
 		if(type == 1){
-			System.out.println("Registro de usuário");
+			System.out.println("Registro de ex-aluno");
 			
-			String fullName  = "Lucas Felipe"; 
-			int    CPF       =  219389384;
-			String email     = "lucasfelipems@gmail.com";
-			String tellphone = "01290494029";
+			String  	     fullName     = "Lucas Felipe"; 
+			int    			 CPF          =  219389384;
+			String 			 email        = "lucasfelipems@gmail.com";
+			String 		     tellphone    = "01290494029";
+			int              registration =  1125673447;
+			SimpleDateFormat format 	  = new SimpleDateFormat("dd/MM/yyyy");
+			Date 			 birth 		  = null;
+			try {
+				birth = format.parse("22/10/1996");
+
+			}catch (ParseException e) {
+				System.out.println("Erro na atribuição de data" +e);
 			
-			User normalUser = new User(fullName, CPF, email, tellphone, false);
-			UserDAO daoUser = new UserDAO();
+			}
 			
-			daoUser.create(normalUser);
-			
-			// TODO - Trocar por métodos de acesso a BD.
-			System.out.println("Usuário cadastrado: " +normalUser.getFullName()    + " - "
-												      +normalUser.getCPF()         + " - "
-												      +normalUser.getEmail()       + " - "
-												      +normalUser.getTellphone()   + ".  ");
+			RegisterAlumnusUser.main(fullName, CPF, email, tellphone, registration, birth);
 			
 			registerQuantity++;
 
-		}else{
+		}else if(type == 2){
 			System.out.println("Registro de usuário externo");
 			
 			String fullName  = "Lucas Felipe"; 
@@ -41,18 +47,7 @@ public class Register {
 			String email     = "lucasfelipems@gmail.com";
 			String tellphone = "01290494029";
 			
-			ExternalUser extUser = new ExternalUser(fullName, razaoSoc, CPF, CNPJ, email, tellphone);
-			UserDAO      daoUser = new UserDAO();
-			
-			daoUser.create(extUser);
-			
-			// TODO - Trocar por métodos de acesso a BD.
-			System.out.println("Usuário cadastrado: " +extUser.getFullName()    + " - "
-													  +extUser.getRazaoSocial() + " - "
-												      +extUser.getCPF()         + " - "
-												      +extUser.getCNPJ()        + " - "
-												      +extUser.getEmail()       + " - "
-												      +extUser.getTellphone()   + ".  ");
+			RegisterExternalUser.main(fullName, razaoSoc, CPF, CNPJ, email, tellphone);
 			
 			registerQuantity++;
 			

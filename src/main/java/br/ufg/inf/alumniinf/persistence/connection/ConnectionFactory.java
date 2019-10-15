@@ -1,4 +1,4 @@
-package br.ufg.inf.alumniinf.dao.connection;
+package br.ufg.inf.alumniinf.persistence.connection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -13,7 +13,7 @@ public class ConnectionFactory {
 	// Classe localizada no driver da jdbc
 	private static final String DRIVER = "com.mysql.jdbc.Driver";
 	private static final String URL    = "jdbc:mysql://localhost:3306/dbAlumniINF";
-	private static final String USER   = "root";
+	private static final String USER   = "lucas";
 	private static final String PASS   = "22101996";
 	
 	

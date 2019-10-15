@@ -1,40 +1,27 @@
 package br.ufg.inf.alumniinf.services;
 
-import br.ufg.inf.alumniinf.dao.model.JobOpportunityDAO;
+import br.ufg.inf.alumniinf.persistence.model.JobOpportunityDAO;
+import br.ufg.inf.alumniinf.persistence.model.UserDAO;
 import br.ufg.inf.alumniinf.persistence.model.bean.ExternalUser;
 import br.ufg.inf.alumniinf.persistence.model.bean.JobOpportunity;
+import br.ufg.inf.alumniinf.persistence.model.bean.User;
 
 public class OfferJobOpportunity {
 
-	public static void main(ExternalUser user) {
-		
-		String title     = "Desenvolvedor Java";
-		String city      = "Goiânia"; 
-		String formation = "Graduação em Engenharia de Software, Ciência da Computação, ou Sistemas de Informação";
-		String skils     = "Java e Pacote office";
-		String minVal    = "1000.0"; 
-		String maxVal    = "2000.0"; 
-		
-		
-		double minSal = Double.valueOf(minVal);
-		double maxSal = Double.valueOf(maxVal);
-		
-		if(formation == "\n") formation = null;
-		
-		if(minVal == "\n") minSal = 0;
-		if(maxVal == "\n") maxSal = 0;
-
-		
-		JobOpportunity    opportunity    = new JobOpportunity(title, city, formation, skils, minSal, maxSal);
+	public static void main(User externalUser, JobOpportunity jobOpportunity) {
+				
 		JobOpportunityDAO daoOpportunity = new JobOpportunityDAO();
+		UserDAO                  daoUser = new UserDAO();
 		
-		daoOpportunity.create(opportunity, user.getCNPJ());
+		ExternalUser exUser = daoUser.getExternalUser(externalUser.getUserName(), externalUser.getPassword());
+		
+		daoOpportunity.createOpportunity(jobOpportunity, exUser.getID());
 
-		System.out.println("Oportunidade de emprego cadastrada: \n" +opportunity.getDescriptiveTitle() + " - "
-																	+opportunity.getActingCity()       + "\nFormação exigida: "
-																	+opportunity.getAcademicFormation()+ "\nHabilidades necessárias: "
-																	+opportunity.getSkils()            + "\nFaixa salarial: "
-																	+opportunity.getSalaryRange());
+		System.out.println("Oportunidade de emprego cadastrada: \n" +jobOpportunity.getDescriptiveTitle() + " - "
+																	+jobOpportunity.getActingCity()       + "\nFormação exigida: "
+																	+jobOpportunity.getAcademicFormation()+ "\nHabilidades necessárias: "
+																	+jobOpportunity.getSkills()            + "\nFaixa salarial: "
+																	+jobOpportunity.getSalaryRange());
 		
 	}
 	

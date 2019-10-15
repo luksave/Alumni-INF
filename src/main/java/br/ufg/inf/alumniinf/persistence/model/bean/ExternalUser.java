@@ -3,13 +3,13 @@ package br.ufg.inf.alumniinf.persistence.model.bean;
 
 public class ExternalUser extends User{
 
+	private int    ID;
 	private String razaoSocial;
-	private int CNPJ;
-	
+	private int    CNPJ;
 	
 	/*------------------------------------------------CONSTRUTOR-----------------------------------------------*/
 	public ExternalUser(String fullName, String razao, int numCPF, int numCNPJ, String email, String tellphone) {
-		super(fullName, numCPF, email, tellphone, true); //10: tamanho da senha
+		super(fullName, numCPF, email, tellphone, "external"); //10: tamanho da senha
 		
 		this.razaoSocial = razao;
 		this.CNPJ      	 = numCNPJ;
@@ -35,7 +35,14 @@ public class ExternalUser extends User{
 	public void setCNPJ(int CNPJ) {
 		this.CNPJ = CNPJ;
 	}
-	/*--------------------------------------------GETTERS E SETTERS--------------------------------------------*/
 
+	/*----------------------------------------------------ID---------------------------------------------------*/
+	public int getID() {
+		return ID;
+	}
+	public void setID(int iD) {
+		this.ID = iD;
+	}
+	/*--------------------------------------------GETTERS E SETTERS--------------------------------------------*/
 		
 }

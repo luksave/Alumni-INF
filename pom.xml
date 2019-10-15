@@ -14,18 +14,11 @@
   
   	<properties>
         	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        	<project.mainClass>br.ufg.inf.alumniinf.app.Main</project.mainClass>
+        	<project.mainClass>br.ufg.inf.alumniinf.apps.Main</project.mainClass>
   	</properties>
   
 	
 	<dependencies>    
-		<!-- https://mvnrepository.com/artifact/com.opencsv/opencsv -->
-		<dependency>
-			<groupId>com.opencsv</groupId>
-			<artifactId>opencsv</artifactId>
-			<version>4.6</version>
-		</dependency>
-		
 		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 		<dependency>
 		<groupId>mysql</groupId>
