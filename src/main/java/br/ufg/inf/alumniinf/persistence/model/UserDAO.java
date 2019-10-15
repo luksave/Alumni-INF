@@ -15,101 +15,137 @@ public class UserDAO {
 	// Se e o usuário criado não é do tipo externo.
 	public void create(AlumnusUser user){
 		
-		//Abrir conexão
-		Connection con = ConnectionFactory.getConnection();
 		
-		//Prepara a requisição ao mysql
+		Connection        con  = ConnectionFactory.getConnection();
 		PreparedStatement stmt = null;
-		
-		// TODO - ALTERAR ESTE INSERT DE ACORDO COM O NOVO BD
+		ResultSet         rs   = null;
+
 		try {
-			// Se ex é false, o usuário não precisa do campo CNPJ e razo?
-			stmt = con.prepareStatement("INSERT INTO user (fullName, userName, password, external, razao, CPF, CNPJ, email, telefone)"
-					                             + "VALUES(?,        ?,        ?,        ?,        NULL,  ?,   NULL,    ?,     ?    )");
+			stmt = con.prepareStatement("INSERT INTO User (fullName, userName, userPassword, userType, tellphone, email)"
+					                             + "VALUES(?,        ?,        ?,            ?,        ?,         ?    )");
 		
-			// Define o valor de FullName na tabela
+			
 			stmt.setString(1, user.getFullName());
-			
-			// Define o valor de UserName na tabela
-			stmt.setString(2, user.getUserName());
-			
-			// Define o valor de Password na tabela	
+			stmt.setString(2, user.getUserName().toString());
 			stmt.setString(3, user.getPassword());
-			
-			// Define o valor de extenal na tabela	
-			stmt.setBoolean(4, false);
-			
-			// Define o valor de CPF na tabela	
-			stmt.setInt(6, user.getCPF());
-			
-			// Define o valor de Email na tabela
-			stmt.setString(8, user.getEmail());
-			
-			// Define o valor de Tellphone na tabela
-			stmt.setString(9, user.getTellphone());
-			
+			stmt.setString(4, "alumnus");
+			stmt.setString(5, user.getTellphone());			
+			stmt.setString(6, user.getEmail());
 			
 			stmt.executeUpdate();
-			System.out.println("Salvo com sucesso");
+			
+			System.out.println("Salvo com sucesso em User");
 			
 		}catch (SQLException e) {
-			System.out.println("Erro ao salvar. " +e);
+			System.out.println("Erro ao salvar em User. " +e);
 			
+		} 
+		
+		
+		// Select para recuperar o id da usuário que acaba de ser inserido
+		try {			
+			stmt = con.prepareStatement("SELECT idUser FROM User WHERE userName = ?");
+			stmt.setString(1, user.getUserName());
+			
+			rs   = stmt.executeQuery();
+			
+			if(rs.next()) System.out.println("ID do ex-aluno sendo cadastrado: " +rs.getInt("idUser"));
+			else 		  System.out.println("Nenhum id recuperado");	
+
+		} catch (SQLException e) {
+			System.out.println("Erro ao recuperar id do usuário inserido: " +e);
+
+		}
+		
+		
+		try {
+			stmt = con.prepareStatement("INSERT INTO Alumnus (idUser, birthDate, CPF, activeAcc, registration)"
+                                                    + "VALUES(?,      ?,         ?,   ?,         ?           )");
+			
+			
+			stmt.setInt    (1, rs.getInt("idUser"));
+			stmt.setDate   (2, user.getBirthDate());
+			stmt.setInt    (3, user.getCPF());
+			stmt.setBoolean(4, true);
+			stmt.setInt    (5, user.getRegistration());
+			
+			stmt.executeUpdate();
+			
+			System.out.println("Salvo com sucesso");
+			
+			
+		} catch (SQLException e) {
+			System.out.println("Erro ao inserir como Alumnus. " +e);
+
 		} finally {
 			ConnectionFactory.closeConnection(con, stmt);
 			
 		}
+		
 		
 	}
 	
 	// Cria um usuário no BD.
 	public void create(ExternalUser user){
 		
-		//Abrir conexão
-		Connection con = ConnectionFactory.getConnection();
-		
-		//Prepara a requisição ao mysql
+		Connection        con  = ConnectionFactory.getConnection();
 		PreparedStatement stmt = null;
-		
-		// TODO - ALTERAR ESTE INSERT DE ACORDO COM O NOVO BD
+		ResultSet         rs   = null;
+
 		try {
-			stmt = con.prepareStatement("INSERT INTO user (fullName, userName, password, external, razaoSocial, CPF, CNPJ, email, tellphone)"
-												 + "VALUES(?,        ?,        ?,        ?,        ?,           ?,   ?,    ?,     ?        )");
-			// Define o valor de FullName na tabela
+			stmt = con.prepareStatement("INSERT INTO User (fullName, userName, userPassword, userType, tellphone, email)"
+												 + "VALUES(?,        ?,        ?,            ?,        ?,         ?    )");
+
 			stmt.setString(1, user.getFullName());
-			
-			// Define o valor de UserName na tabela
-			stmt.setString(2, user.getUserName());
-			
-			// Define o valor de Password na tabela	
+			stmt.setString(2, user.getUserName().toString());
 			stmt.setString(3, user.getPassword());
-			
-			// Define o valor de extenal na tabela	
-			stmt.setBoolean(4, true);
-			
-			// Define o valor de razao na tabela
-			stmt.setString(5, user.getRazaoSocial());
-			
-			// Define o valor de CPF na tabela	
-			stmt.setInt(6, user.getCPF());
-			
-			// Define o valor de CNPJ na tabela
-			stmt.setInt(7, user.getCNPJ());
-			
-			// Define o valor de Email na tabela
-			stmt.setString(8, user.getEmail());
-			
-			// Define o valor de Tellphone na tabela
-			stmt.setString(9, user.getTellphone());
-				
+			stmt.setString(4, "external");
+			stmt.setString(5, user.getTellphone());			
+			stmt.setString(6, user.getEmail());
 			
 			stmt.executeUpdate();
+			
+			System.out.println("Salvo com sucesso em User");
+		
+			
+		}catch (SQLException e) {
+			System.out.println("Erro ao salvar em User. " +e);
+			
+		}
+		
+		// Select para recuperar o id da usuário que acaba de ser inserido
+		try {			
+			stmt = con.prepareStatement("SELECT idUser FROM User WHERE userName = ?");
+			stmt.setString(1, user.getUserName());
+			
+			rs   = stmt.executeQuery();
+			
+			if(rs.next()) System.out.println("ID do ex-aluno sendo cadastrado: " +rs.getInt("idUser"));
+			else 		  System.out.println("Nenhum id recuperado");	
+
+		} catch (SQLException e) {
+			System.out.println("Erro ao recuperar id do usuário inserido: " +e);
+
+		}
+		
+		try {
+			stmt = con.prepareStatement("INSERT INTO External (idUser, CPF, CNPJ, razaoSocial, nameRepresentedCo)"
+                                                     + "VALUES(?,      ?,   ?,    ?,           ?                )");
+			
+			stmt.setInt    (1, rs.getInt("idUser"));
+			stmt.setInt    (2, user.getCPF());
+			stmt.setInt	   (3, user.getCNPJ());
+			stmt.setString (4, user.getRazaoSocial());
+			stmt.setString (5, user.getRepresentedCompany());
+			
+			stmt.executeUpdate();
+			
 			System.out.println("Salvo com sucesso");
 			
 			
-		}catch (SQLException e) {
-			System.out.println("Erro ao salvar. " +e);
-			
+		} catch (SQLException e) {
+			System.out.println("Erro ao inserir como Alumnus. " +e);
+
 		} finally {
 			ConnectionFactory.closeConnection(con, stmt);
 			
@@ -118,37 +154,64 @@ public class UserDAO {
 	}
 	
 	
-	// Vou retornar para a classe Login o usuário externo logado (ISSO NÃO ARMAZENA UM NOVO USUÁRIO E SENHA NO BD)
-	public AlumnusUser loginAlumnusUser(String userName, String userPass){
+	public String loginUser(String userName, String userPass){
 		
 		Connection        con  = ConnectionFactory.getConnection();
 		PreparedStatement stmt = null;
 		ResultSet         rs   = null;
-
+		
 		try {
-			stmt = con.prepareStatement("SELECT fullName, CPF, email, tellphone, type, registration, birthDate "
-					                   +"FROM User, Alumnus "
-					                   +"WHERE User.userName = " +userName+ " AND User.userPassword = " +userPass);
+			stmt = con.prepareStatement("SELECT idUser, fullName, email, tellphone, userType "
+					                   +"FROM User "
+					                   +"WHERE userName = ? AND userPassword = ?");
+			
+			stmt.setString(1, userName);
+			stmt.setString(2, userPass);
+			
 			rs = stmt.executeQuery();
+			rs.next();	
+		
+			return rs.getString("userType");
 			
 			
-			//Retorna false se não há rows armazenadas.
-			if(rs.next()){
-				System.out.println("\n----------- LOGADO -----------");
-				AlumnusUser user = new AlumnusUser(rs.getString("fullName"),  rs.getInt("CPF"),     rs.getString("email"),
-						                           rs.getString("tellphone"), rs.getString("type"), rs.getInt("registration"),
-						                           rs.getDate("birthDate"));
 				
-				return user;
-				
-			}else{
-				System.out.println("\n------- Falha no Login -------");
-				return null;
-				
-			}
-			
 		} catch (SQLException e) {
-			System.out.println("Falha na execução da query. " +e);
+			System.out.println("Falha na execução da query Login User. " +e);
+			return null;
+			
+		}
+		
+		
+	}
+	
+	// Retornar para a classe Login o usuário alumnus logado (ISSO NÃO ARMAZENA UM NOVO USUÁRIO E SENHA NO BD)
+	public static AlumnusUser loginAlumnusUser(String userName, String userPass){
+		
+		System.out.println("\n----------Alumnus LOGADO----------");
+		
+		Connection        con  = ConnectionFactory.getConnection();
+		PreparedStatement stmt = null;
+		ResultSet         rs   = null;
+		
+		try {
+			stmt = con.prepareStatement("SELECT fullName, CPF, email, tellphone "
+					                   +"FROM User, Alumnus "
+					                   +"WHERE userName = ? AND userPassword = ?");
+			
+			stmt.setString(1, userName);
+			stmt.setString(2, userPass);
+			
+			rs = stmt.executeQuery();
+			rs.next();	
+		
+			AlumnusUser user = new AlumnusUser(userName, rs.getString("fullName"), rs.getInt("CPF"), rs.getString("email"), rs.getString("tellphone"));
+			
+			return user;
+			
+			
+				
+		} catch (SQLException e) {
+			System.out.println("Falha na execução da query Login User. " +e);
 			return null;
 			
 		}
@@ -157,42 +220,36 @@ public class UserDAO {
 	
 	
 	// Vou retornar para a classe Login o usuário externo logado (ISSO NÃO ARMAZENA UM NOVO USUÁRIO E SENHA NO BD)
-	public ExternalUser loginExternalUser(String userName, String userPass){
+	public static ExternalUser loginExternalUser(String userName, String userPass){
 		
+		System.out.println("\n----------External LOGADO----------");
+			
 		Connection        con  = ConnectionFactory.getConnection();
 		PreparedStatement stmt = null;
 		ResultSet         rs   = null;
-
-		//TODO - ALTERAR ESTE INSERT
+		
 		try {
-			stmt = con.prepareStatement("SELECT idUser, fullName, razaoSocial, CPF, CNPJ, email, tellphone "
-									   +"FROM User, Alumnus "
-									   +"WHERE User.userName = " +userName+ " AND User.password = " +userPass);
+			stmt = con.prepareStatement("SELECT fullName, CNPJ, razaoSocial, nameRepresentedCo "
+					                   +"FROM User, External "
+					                   +"WHERE userName = ? AND userPassword = ?");
+			
+			stmt.setString(1, userName);
+			stmt.setString(2, userPass);
+			
 			rs = stmt.executeQuery();
+			rs.next();	
+		
+			ExternalUser user = new ExternalUser(userName, rs.getString("fullName"), rs.getInt("CNPJ"), rs.getString("razaoSocial"), rs.getString("nameRepresentedCo"));
 			
+			return user;
 			
-			//Retorna false se não há rows armazenadas.
-			if(rs.next()){
-				System.out.println("\n----------- LOGADO -----------");
-				ExternalUser user = new ExternalUser(rs.getString("fullname"), rs.getString("razaoSocial"), rs.getInt("CPF"), 
-						                             rs.getInt("CNPJ"),        rs.getString("email"),       rs.getString("tellphone"));
-				
-				user.setID(rs.getInt("idUser"));
-				
-				return user;
-				
-			}else{
-				System.out.println("\n------- Falha no Login -------");
-				return null;
-				
-			}
 			
 		} catch (SQLException e) {
-			System.out.println("Falha na execução da query. " +e);
+			System.out.println("Falha na execução da query Login User. " +e);
 			return null;
 			
 		}
-
+		
 	}
 	
 	
@@ -202,19 +259,23 @@ public class UserDAO {
 		PreparedStatement stmt = null;
 		ResultSet         rs   = null;
 
-		//TODO - ALTERAR ESTE INSERT
+		//TODO - ALTERAR ESTE SELECT
 		try {
-			stmt = con.prepareStatement("SELECT idUser, fullName, razaoSocial, CPF, CNPJ, email, tellphone "
-					                   +"FROM User, Alumnus "
-					                   +"WHERE User.userName = " +userName+ " AND User.password = " +userPass);
+			stmt = con.prepareStatement("SELECT User.idUser, fullName, razaoSocial, CPF, CNPJ, email, tellphone, nameRepresentedCo "
+									   +"FROM User, External "
+									   +"WHERE userName = ? AND userPassword = ?");
+			
+			stmt.setString(1, userName);
+			stmt.setString(2, userPass);
+			
 			rs = stmt.executeQuery();
 			
 			
 			//Retorna false se não há rows armazenadas.
 			if(rs.next()){
 				System.out.println("\n----------- Usuário Externo Encontrado -----------");
-				ExternalUser user = new ExternalUser(rs.getString("fullname"), rs.getString("razaoSocial"), rs.getInt("CPF"), 
-						                             rs.getInt("CNPJ"),   rs.getString("email"),    rs.getString("tellphone"));
+				ExternalUser user = new ExternalUser(rs.getString("fullname"), rs.getString("razaoSocial"), rs.getInt("CPF"), rs.getInt("CNPJ"),
+                                                     rs.getString("email"),    rs.getString("tellphone"),   rs.getString("nameRepresentedCo"));
 				
 				user.setID(rs.getInt("idUser"));
 				

@@ -23,10 +23,12 @@ public class ConnectionFactory {
 			Class.forName(DRIVER);
 			return DriverManager.getConnection(URL, USER, PASS);
 			
-		}catch (ClassNotFoundException | SQLException ex) {
-			throw new RuntimeException("Erro na conexão");
+		}catch (ClassNotFoundException ex) {
+			throw new RuntimeException("Class not found: " +ex);
 			
-		}
+		}catch (SQLException ex) {
+			throw new RuntimeException("Erro no sql: " +ex);
+		}	
 		
 	}
 	

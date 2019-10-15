@@ -26,7 +26,11 @@ public class AlumniINFSystem {
 
 		String user = name.substring(0,(name.length()-1)) + name.charAt(0) + num;
 		
-		System.out.println("Nome de usuário gerado: " +user);
+		int index = user.indexOf(' ');
+		
+		user = name.substring(0,(index-1)) + name.substring((index+1), name.length()-1)+ num;
+		
+		//System.out.println("Nome de usuário gerado: " +user);
 		return user;
 		
 	}
@@ -45,8 +49,7 @@ public class AlumniINFSystem {
 
         }
 
-        System.out.println("Senha gerada: " +sb.toString());
-        
+        //System.out.println("Senha gerada: " +sb.toString());
 		return sb.toString();	    
         
 	}

@@ -1,6 +1,8 @@
 package br.ufg.inf.alumniinf.persistence.model.bean;
 
-import java.util.Date;
+import java.sql.Date;
+
+
 
 public class AlumnusUser extends User{
 
@@ -20,6 +22,12 @@ public class AlumnusUser extends User{
 		
 	}
 
+	public AlumnusUser(String user, String fullName, int CPF,  String email, 
+	                   String tellphone) {	
+		super(user, fullName, "alumnus");
+		
+	}
+	
 	public int getRegistration() {
 		return registration;
 	}
