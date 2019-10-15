@@ -9,5 +9,5 @@ cache:
   - "$HOME/.m2/repository"
 
 script:
-  - mvn install
+  - mvn clean install
   #- mvn exec:java
