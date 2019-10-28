@@ -56,7 +56,7 @@ acadêmica (não ou curso superior exigido), atividades a serem
 realizadas e faixa salarial.
 
 ## Diagrama de caso de uso
-![](https://i.imgur.com/UgxzlhS.png)
+![](https://i.imgur.com/3Dv2mxw.jpg)
 
 ## Caso de uso detalhado
 **Nota:** Alguns detalhes ainda devem ser implementados.
