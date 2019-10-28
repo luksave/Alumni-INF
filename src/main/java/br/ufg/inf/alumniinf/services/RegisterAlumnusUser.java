@@ -1,6 +1,6 @@
 package br.ufg.inf.alumniinf.services;
 
-import java.sql.Date;
+import java.util.Date;
 
 import br.ufg.inf.alumniinf.persistence.model.UserDAO;
 import br.ufg.inf.alumniinf.persistence.model.bean.AlumnusUser;

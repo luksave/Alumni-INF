@@ -12,7 +12,7 @@ public class User {
 	private String type;
 	
 	
-	/*-----------------------------------CONSTRUTORES----------------------------------*/
+	/*------------------------------------CONSTRUTOR-----------------------------------*/
 	public User(String fullName, int CPF, String email, String tellphone, String type) {
 		this.fullName  = fullName;
 		this.numCPF	   = CPF;
@@ -23,14 +23,6 @@ public class User {
 		this.password  = AlumniINFSystem.generatePassword(10); //10: tamanho da senha
 		
 	}
-	
-	public User(String user, String fullName, String type) {
-		this.userName  = user;
-		this.fullName  = fullName;
-		this.type      = type;
-		
-	}
-	
 	/*------------------------------------CONSTRUTOR-----------------------------------*/
 	
 	

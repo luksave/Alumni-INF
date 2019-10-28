@@ -10,26 +10,23 @@ import br.ufg.inf.alumniinf.services.OfferJobOpportunity;
 
 public class LoginApp {
 
-	private static Scanner scanner = new Scanner(System.in);
-	private static int     option; 
+	private static Scanner scanner;
 	
 	public static void main(String[] args) {
 		System.out.println("1 - Realizar Login\n"
 				  		  +"0 - Sair do sistema\n: ");
 
-	    option = 1;//scanner.nextInt();
+		int option = scanner.nextInt();
 		
 		if(option == 1){
 			User user = Login.realizeLogin();
 		
-			System.out.println("User: " +user.getFullName());
-			
 			if(user.getType() == "alumnus"){
-				System.out.println("Escolha a opção:\n"
+				System.out.println("Escolha a opção"
 								  +"1 - Listar oportunidade\n"
 								  +"0 - Sair do sistema\n:");
 				
-				option = 1;//= scanner.nextInt();
+				option = scanner.nextInt();
 				
 				if(option == 1){
 					System.out.println("Lista de Oportunidades:\n");
@@ -43,7 +40,7 @@ public class LoginApp {
 				
 			}
 			
-			else if(user.getType() == "external"){
+			if(user.getType() == "external"){
 				System.out.println("Escolha a opção"
 				  				  +"1 - Oferecer oportunidade\n"
 								  +"0 - Sair do sistema\n:");

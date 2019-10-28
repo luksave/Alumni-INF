@@ -1,29 +1,20 @@
 package br.ufg.inf.alumniinf.services;
 
 import br.ufg.inf.alumniinf.persistence.model.UserDAO;
-import br.ufg.inf.alumniinf.persistence.model.bean.AlumnusUser;
-import br.ufg.inf.alumniinf.persistence.model.bean.ExternalUser;
+import br.ufg.inf.alumniinf.persistence.model.bean.User;
 
 public class LoginUser {
-	
-	public static String login(String userName, String userPass) {
+
+	public static User main(String userName, String userPass) {
 		
 		UserDAO daoUser = new UserDAO();
 		
-		String type = daoUser.loginUser(userName, userPass);
+		User user = daoUser.loginExternalUser(userName, userPass);
+
+		System.out.println("Usuário cadastrado: \n" + user.getUserName() + " - "
+													+ user.getPassword());
 		
-		return type;
-				
-	}
-	
-	
-	public static AlumnusUser loginAlumnus(String userName, String userPass){
-		return UserDAO.loginAlumnusUser(userName, userPass);
-		
-	}
-	
-	public static ExternalUser loginExternal(String userName, String userPass){
-		return UserDAO.loginExternalUser(userName, userPass);
+		return user;
 		
 	}
 	

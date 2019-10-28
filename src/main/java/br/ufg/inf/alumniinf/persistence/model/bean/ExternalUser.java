@@ -4,28 +4,17 @@ package br.ufg.inf.alumniinf.persistence.model.bean;
 public class ExternalUser extends User{
 
 	private int    ID;
-	private int    CNPJ;
 	private String razaoSocial;
-	private String representedCompany;
+	private int    CNPJ;
 	
-	/*-----------------------------------------------CONSTRUTORES----------------------------------------------*/
-	public ExternalUser(String fullName, String razao, int numCPF, int numCNPJ, String email, String tellphone, String represented) {
-		super(fullName, numCPF, email, tellphone, "external"); 
+	/*------------------------------------------------CONSTRUTOR-----------------------------------------------*/
+	public ExternalUser(String fullName, String razao, int numCPF, int numCNPJ, String email, String tellphone) {
+		super(fullName, numCPF, email, tellphone, "external"); //10: tamanho da senha
 		
-		this.razaoSocial        = razao;
-		this.representedCompany = represented;
-		this.CNPJ      	        = numCNPJ;
-		
-	}
-	public ExternalUser(String user, String fullName, int numCNPJ, String razao, String represented) {
-		super(user, fullName, "external");
-		
-		this.CNPJ = numCNPJ;
 		this.razaoSocial = razao;
-		this.representedCompany = represented;
+		this.CNPJ      	 = numCNPJ;
 		
 	}
-	
 	/*------------------------------------------------CONSTRUTOR-----------------------------------------------*/
 	
 	
@@ -53,14 +42,6 @@ public class ExternalUser extends User{
 	}
 	public void setID(int iD) {
 		this.ID = iD;
-	}
-	
-	/*--------------------------------------------Represented Company-------------------------------------------*/
-	public String getRepresentedCompany() {
-		return representedCompany;
-	}
-	public void setRepresentedCompany(String representedCompany) {
-		this.representedCompany = representedCompany;
 	}
 	/*--------------------------------------------GETTERS E SETTERS--------------------------------------------*/
 		

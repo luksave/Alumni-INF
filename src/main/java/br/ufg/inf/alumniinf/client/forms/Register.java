@@ -1,7 +1,8 @@
 package br.ufg.inf.alumniinf.client.forms;
 
-
-import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 import br.ufg.inf.alumniinf.services.RegisterAlumnusUser;
@@ -22,7 +23,15 @@ public class Register {
 			String 			 email        = "lucasfelipems@gmail.com";
 			String 		     tellphone    = "01290494029";
 			int              registration =  1125673447;
-			Date 			 birth 		  = Date.valueOf("1996-01-22");
+			SimpleDateFormat format 	  = new SimpleDateFormat("dd/MM/yyyy");
+			Date 			 birth 		  = null;
+			try {
+				birth = format.parse("22/10/1996");
+
+			}catch (ParseException e) {
+				System.out.println("Erro na atribuição de data" +e);
+			
+			}
 			
 			RegisterAlumnusUser.main(fullName, CPF, email, tellphone, registration, birth);
 			
@@ -31,15 +40,14 @@ public class Register {
 		}else if(type == 2){
 			System.out.println("Registro de usuário externo");
 			
-			String fullName    = "Lucas Felipe"; 
-			String razaoSoc    = "Luksave C.O";
-			int    CPF         =  219389384;
-			int    CNPJ        =  910291142;
-			String email       = "lucasfelipems@gmail.com";
-			String tellphone   = "01290494029";
-			String represented = "M.A.D - Software";
+			String fullName  = "Lucas Felipe"; 
+			String razaoSoc  = "Luksave C.O";
+			int    CPF       =  219389384;
+			int    CNPJ      =  910291142;
+			String email     = "lucasfelipems@gmail.com";
+			String tellphone = "01290494029";
 			
-			RegisterExternalUser.main(fullName, razaoSoc, CPF, CNPJ, email, tellphone, represented);
+			RegisterExternalUser.main(fullName, razaoSoc, CPF, CNPJ, email, tellphone);
 			
 			registerQuantity++;
 			
