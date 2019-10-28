@@ -58,6 +58,9 @@ realizadas e faixa salarial.
 ## Diagrama de caso de uso
 ![](https://i.imgur.com/3Dv2mxw.jpg)
 
+## Diagrama Entidade Relacionamento
+![](https://i.imgur.com/YIB0LYS.png)
+
 ## Caso de uso detalhado
 **Nota:** Alguns detalhes ainda devem ser implementados.
 
