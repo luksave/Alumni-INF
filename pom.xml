@@ -94,5 +94,21 @@
 		</plugins>
 	</build>
 
+	<reporting>
+		<plugins>
+		    	<plugin>
+				<groupId>org.owasp</groupId>
+				<artifactId>dependency-check-maven</artifactId>
+				<version>5.2.4</version>
+				<reportSets>
+				    <reportSet>
+					<reports>
+					    <report>aggregate</report>
+					</reports>
+				    </reportSet>
+				</reportSets>
+            		</plugin>	
+		</plugins>
+	</reporting>
 			
 </project>
