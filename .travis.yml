@@ -10,4 +10,5 @@ cache:
 
 script:
   - mvn clean install
-  #- mvn exec:java
+  # Comando para executar os plugins de relatório
+  - mvn site
