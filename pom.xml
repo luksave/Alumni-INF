@@ -96,6 +96,7 @@
 
 	<reporting>
 		<plugins>
+			<!-- DEPENDENCY CHECK -->
 		    	<plugin>
 				<groupId>org.owasp</groupId>
 				<artifactId>dependency-check-maven</artifactId>
@@ -107,7 +108,29 @@
 					</reports>
 				    </reportSet>
 				</reportSets>
-            		</plugin>	
+            		</plugin>
+			
+			<!-- SPOTBUGS -->
+		    	<plugin>
+				<groupId>com.github.spotbugs</groupId>
+				<artifactId>spotbugs-maven-plugin</artifactId>
+				<version>3.1.12.2</version>
+		    	</plugin>
+
+			<!-- CHECKSTYLE -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>${checkstyle.plugin.versao}</version>
+				<reportSets>
+				    <reportSet>
+					<reports>
+					    <report>checkstyle</report>
+					</reports>
+				    </reportSet>
+				</reportSets>
+			</plugin>
+			
 		</plugins>
 	</reporting>
 			
