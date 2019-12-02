@@ -12,3 +12,6 @@ script:
   - mvn clean install
   # Comando para executar os plugins de relatório
   - mvn site
+  # Comando para executar os testes
+  - mvn clean test
+
